@@ -12,20 +12,13 @@ Gradio 单页 Web 平台：**瞳孔/虹膜分割 → 逐帧数据 → PLR 参数
 
 ## 相关仓库
 
-| 仓库 | 内容 | 必需 |
-|---|---|---|
-[`pupil-recognition-web-pro`](https://github.com/QingQueFans/pupil-recognition-web-pro) | 专业版（训练/推理/去模糊/光流/ROI/3D） | 二选一 |
-[`pupil-recognition-web-lite`](https://github.com/QingQueFans/pupil-recognition-web-lite) | 轻量版（三步引导，面向医生） | 二选一 |
-[`pupil-models`](https://github.com/QingQueFans/pupil-models) | 模型权重（分割三变体 + 去模糊专家 + 光流） | **必需** |
+| 仓库 | 内容 |
+|---|---|
+[`pupil-recognition-web-pro`](https://github.com/QingQueFans/pupil-recognition-web-pro) | 专业版（训练/推理/去模糊/光流/ROI/3D） |
+[`pupil-recognition-web-lite`](https://github.com/QingQueFans/pupil-recognition-web-lite) | 轻量版（三步引导，面向医生） |
 
-代码仓库不含权重，克隆后需要：
-
-```bash
-git clone https://github.com/QingQueFans/pupil-models.git
-bash pupil-models/install.sh ~/qingque_yolo
-```
-
-数据集（openEDS / LPW 录像）体积过大，不入库，用环境变量指向本地路径：
+**模型权重已随本仓库提交**，`git clone` 后即可直接运行，无需另外下载。
+数据集（openEDS / LPW 录像）体积过大不入库，用环境变量指向本地路径：
 `PUPIL_OPENEDS_DIR`、`PUPIL_LPW_DIR`。
 
 ## 快速开始
