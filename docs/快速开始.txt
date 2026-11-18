@@ -1,0 +1,67 @@
+==========================================================
+  瞳孔评估系统 · 快速开始（一页纸）
+  详细说明见同目录 04_部署手册.pdf
+==========================================================
+
+【三步跑起来】
+
+  1) 拉代码（两个仓库都自带模型权重，不用另外下载）
+     git clone git@github.com:pupil-recognization-web/pupil-recognition-web-lite.git
+     git clone git@github.com:pupil-recognization-web/pupil-datasets.git
+
+     注：没有配 SSH key 就用 https://github.com/... 形式
+         pupil-datasets 是私有仓库，需要账号授权
+
+  2) 建环境（每台新机器一次）
+     conda create -n pupil python=3.10 -y
+     conda activate pupil
+     pip install -r pupil-recognition-web-lite/requirements.txt
+
+  3) 放数据 + 启动
+     bash pupil-datasets/install.sh --samples-only ~/qingque_yolo   # 3 段样本，几秒
+     # 要全部 186 段就把 --samples-only 去掉（约 262 MB）
+     cd pupil-recognition-web-lite
+     bash start.sh
+     # 浏览器打开 http://<本机IP>:8081
+
+
+【先自检，再用】
+
+  cd pupil-recognition-web-lite
+  python tools/selfcheck.py      # 应输出 FAIL 0
+  python tools/smoke_test.py     # 应输出全部通过
+
+
+【专业版（可选）】
+
+  git clone git@github.com:pupil-recognization-web/pupil-recognition-web-pro.git
+  cd pupil-recognition-web-pro && bash start.sh      # http://<IP>:8080
+
+
+【常见问题】
+
+  页面打不开        → 看 app.log 最后 50 行；确认 bash start.sh 没报错
+  模型加载失败      → ultralytics 版本不对，必须 8.4.106；
+                      用仓库里 patches/ultralytics_custom/apply.sh 覆盖
+  PDF 导出失败      → 缺 wkhtmltopdf：sudo apt install wkhtmltopdf
+  PDF 中文方块      → sudo apt install fonts-noto-cjk
+  服务过一会就没了  → 内存不足被系统杀掉：
+                      sudo bash ~/qingque_yolo/install_service.sh（开机自启+自动重启）
+  识别全失败        → 视频编码问题：ffmpeg -i 输入.mp4 看能否解码，必要时转码 -c:v libx264
+  只想看结论        → 用轻量版（8081），专业版是给研发调参用的
+
+
+【文档在哪】
+
+  01_使用报告_轻量版.pdf    医生怎么用（三步、结果怎么读）
+  02_使用报告_专业版.pdf    专业版功能地图与工作流
+  03_技术报告_论文.pdf      技术细节、实验数据、局限
+  04_部署手册.pdf           完整部署与排错（本页的详细版）
+  05_双版本介绍.pptx        16 页介绍，含讲稿备注
+
+
+【边界提醒】
+
+  本系统是研究性辅助工具，不是医疗器械，不能替代临床判断。
+  数据集为 OpenEDS 衍生版本，仅限研究用途，不得公开发布或商用。
+==========================================================
