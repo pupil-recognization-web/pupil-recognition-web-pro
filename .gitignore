@@ -5,6 +5,7 @@ __pycache__/
 .pytest_cache/
 
 # 产出与缓存（体积大、可重建）
+plots/
 outputs/
 cache/
 train_logs/
