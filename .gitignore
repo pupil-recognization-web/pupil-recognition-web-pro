@@ -4,13 +4,13 @@ __pycache__/
 *.pyo
 .pytest_cache/
 
+# 模型权重随仓库提交（clone 即可运行，见 README）
+
 # 产出与缓存（体积大、可重建）
 plots/
 outputs/
 cache/
 train_logs/
-models/*.pt
-models/**/*.pt
 
 # 本地临时
 _patch/

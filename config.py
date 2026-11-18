@@ -40,7 +40,10 @@ YOLO_ROOT = Path(os.environ.get("PUPIL_YOLO_ROOT") or "/home/qingque/qingque_yol
 #: VOGeo-Gaze 仓库根
 VOGE0_ROOT = Path(os.environ.get("PUPIL_VOGEO_ROOT") or YOLO_ROOT / "VOGeo-Gaze")
 #: 去模糊专家权重根（每个专家一个子目录，内含 best.pth）
-DEBLUR_MODEL_DIR = Path(os.environ.get("PUPIL_DEBLUR_DIR") or YOLO_ROOT / "LPW" / "models")
+# 去模糊专家：优先用仓库内自带的 models/deblur（clone 即可用），否则回退到大目录
+_LOCAL_DEBLUR = BASE_DIR / "models" / "deblur"
+DEBLUR_MODEL_DIR = Path(os.environ.get("PUPIL_DEBLUR_DIR")
+                        or (_LOCAL_DEBLUR if _LOCAL_DEBLUR.is_dir() else YOLO_ROOT / "LPW" / "models"))
 
 #: 数据集名 -> 视频目录
 DATASET_DIRS = {
