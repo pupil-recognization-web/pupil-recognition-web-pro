@@ -195,3 +195,14 @@ PUPIL_YOLO_DEVICE=cpu ./start.sh   # 强制 CPU（GPU 被别的任务占满时�
 
 显存只剩 2 G 左右时（被别的任务占用），建议先用 `PUPIL_YOLO_DEVICE=cpu` 跑推理，
 不要在此时启动训练。
+
+### 提交与备份
+
+```bash
+./tools/commit.sh -m "改了什么"          # 语法检查 + 隐私扫描 + 冒烟，全过才提交
+./tools/commit.sh -m "改了什么" --push   # 顺带推送
+./tools/backup.sh                        # 备份代码快照 + 患者历史 + 标定 + 基线
+```
+
+`commit.sh` 会拦住：语法错误、含手机号/身份证号、冒烟不通过——推上去的一定是能跑的版本。
+`backup.sh` 默认写到 `/mnt/backup/pupil_backups`，只保留最近 10 份；权重不重复备份（git 里已有）。
