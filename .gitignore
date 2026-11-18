@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# 产出与缓存（体积大、可重建）
+outputs/
+cache/
+train_logs/
+models/*.pt
+models/**/*.pt
+
+# 本地临时
+_patch/
+*.log
+*.log.1
+.DS_Store

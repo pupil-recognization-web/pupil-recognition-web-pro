@@ -1,0 +1,22 @@
+[Unit]
+Description=Pupil Recognition Platform (Professional) - Gradio
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=qingque
+WorkingDirectory=/home/qingque/qingque_yolo/pupil_recognition_web_v2
+Environment=MPLCONFIGDIR=/tmp/mpl-cache
+Environment=PUPIL_PORT=8080
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/mnt/backup/miniconda3/envs/yolo/bin/python app.py
+Restart=always
+RestartSec=5
+MemoryHigh=3000M
+MemoryMax=5000M
+StandardOutput=append:/home/qingque/qingque_yolo/pupil_recognition_web_v2/app.log
+StandardError=append:/home/qingque/qingque_yolo/pupil_recognition_web_v2/app.log
+
+[Install]
+WantedBy=multi-user.target
