@@ -14,8 +14,8 @@ Gradio 单页 Web 平台：**瞳孔/虹膜分割 → 逐帧数据 → PLR 参数
 
 | 仓库 | 内容 |
 |---|---|
-[`pupil-recognition-web-pro`](https://github.com/QingQueFans/pupil-recognition-web-pro) | 专业版（训练/推理/去模糊/光流/ROI/3D） |
-[`pupil-recognition-web-lite`](https://github.com/QingQueFans/pupil-recognition-web-lite) | 轻量版（三步引导，面向医生） |
+[`pupil-recognition-web-pro`](https://github.com/pupil-recognization-web/pupil-recognition-web-pro) | 专业版（训练/推理/去模糊/光流/ROI/3D） |
+[`pupil-recognition-web-lite`](https://github.com/pupil-recognization-web/pupil-recognition-web-lite) | 轻量版（三步引导，面向医生） |
 
 **模型权重已随本仓库提交**，`git clone` 后即可直接运行，无需另外下载。
 数据集（openEDS / LPW 录像）体积过大不入库，用环境变量指向本地路径：
